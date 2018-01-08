@@ -15,8 +15,17 @@ class App extends Component {
     //addreminders helper method
     addReminder() {
         // console.log('this.state', this.state);
-        console.log('this.state.dueDate', this.state.dueDate);
+        // console.log('this.state.dueDate', this.state.dueDate);
+        const now = moment().format("MMMM Do YYYY, h:mm:ss a");
+        const userDate =  moment(new Date(this.state.dueDate)).format("MMMM Do YYYY, h:mm:ss a");
+        console.log('now time', now);
+        console.log('user time', userDate);
         this.props.addReminder(this.state.text, this.state.dueDate);
+        if(userDate > now) {
+            console.log('date not passed.', userDate);
+        } else {
+            console.log('date is passed.', userDate);
+        }
     };
 
     // deleteReminder helper method
